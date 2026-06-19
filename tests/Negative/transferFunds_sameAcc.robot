@@ -1,0 +1,57 @@
+*** Settings ***
+Library     SeleniumLibrary
+Resource    ../../resources/pages/transferFunds_page.robot
+
+Suite Setup     Load Environment
+Test Setup      Open Application
+Test Teardown       Close Application
+
+*** Test Cases ***
+TC-NEG-TF-01 Transfer To Same Account
+    [Documentation]    Attempt to transfer funds from an account to itself and verify that the application prevents this action with an appropriate error message.
+    Wait Until Page Contains    Accounts Overview    15s
+    Click Element    ${transfer_funds}
+
+    Input Text    ${amount}    100
+    Wait Until Element Is Visible    ${from_account_dropdown}
+    ${account}=    Get Text
+    ...    ${from_account_dropdown}
+
+    Select From List By Label
+    ...    ${from_account}
+    ...    ${account}
+
+    Select From List By Label
+    ...    ${to_account}
+    ...    ${account}
+
+    Click Element    ${transfer_btn}
+
+    Sleep    3s
+
+    Capture Page Screenshot
+
+TC-NEG-TF-02 Transfer Amount Exceeds Balance
+    Wait Until Page Contains    Accounts Overview    15s
+    Click Element    ${transfer_funds}
+
+    Input Text    ${amount}    999999
+    ${accounts}=    Get List Items    ${from_account}
+    Log To Console    ${accounts}
+    ${source}=    Set Variable    ${accounts}[1]
+    ${dest}=      Set Variable    ${accounts}[2]
+
+    Select From List By Label    ${from_account}    ${source}
+    Select From List By Label    ${to_account}      ${dest}
+#    Select From List By Label
+#    ...    ${from_account}
+#    ...    ${SOURCE_ACCOUNT}
+#    Sleep    5s
+#    Select From List By Label
+#    ...    ${to_account}
+#    ...    ${DEST_ACCOUNT}
+    Click Element    ${transfer_btn}
+
+    Sleep    3s
+#
+#    Capture Page Screenshot
