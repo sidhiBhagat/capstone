@@ -35,11 +35,15 @@ TC-NEG-TF-02 Transfer Amount Exceeds Balance
     Wait Until Page Contains    Accounts Overview    15s
     Click Element    ${transfer_funds}
 
+    Wait Until Element Is Visible    ${from_account}    10s
+    Wait Until Keyword Succeeds    10x    1s
+    ...    Page Should Contain Element    ${from_account}/option[2]
+
     Input Text    ${amount}    999999
     ${accounts}=    Get List Items    ${from_account}
     Log To Console    ${accounts}
-    ${source}=    Set Variable    ${accounts}[1]
-    ${dest}=      Set Variable    ${accounts}[2]
+    ${source}=    Set Variable    ${accounts}[0]
+    ${dest}=      Set Variable    ${accounts}[1]
 
     Select From List By Label    ${from_account}    ${source}
     Select From List By Label    ${to_account}      ${dest}

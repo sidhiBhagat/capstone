@@ -5,38 +5,57 @@ Resource    ../../resources/keywords/common_resources.robot
 
 *** Keywords ***
 Transfer Funds
-
-    Wait Until Page Contains   Accounts Overview     25s
+#
+#    Wait Until Page Contains   Accounts Overview     25s
+#    Click Element    ${transfer_funds}
+#
+#    Input Text
+#    ...    ${amount}
+#    ...    100
+#
+#    Set Suite Variable
+#    ...    ${TRANSFER_AMOUNT}
+#    ...    100
+#
+#    ${from_options}=    Get List Items    ${from_account}
+#    Log To Console    FROM OPTIONS=${from_options}
+#    Wait Until Element Is Visible
+#    ...    ${from_account}
+#    ...   3s
+#
+#    Sleep    2s
+#    Select From List By Label
+#    ...    ${from_account}
+#    ...    ${SOURCE_ACCOUNT}
+#    Sleep    2s
+#    Select From List By Label
+#    ...    ${to_account}
+#    ...    ${DEST_ACCOUNT}
+#
+#    Click Element
+#    ...    ${transfer_btn}
+#
+#    Wait Until Page Contains
+#    ...    Transfer Complete!
+    Wait Until Page Contains    Accounts Overview    25s
     Click Element    ${transfer_funds}
 
-    Input Text
-    ...    ${amount}
-    ...    100
+    Input Text    ${amount}    100
+    Set Suite Variable    ${TRANSFER_AMOUNT}    100
 
-    Set Suite Variable
-    ...    ${TRANSFER_AMOUNT}
-    ...    100
+    Wait Until Element Is Visible    ${from_account}    10s
+    Wait Until Keyword Succeeds    10x    1s
+    ...    Page Should Contain Element    ${from_account}/option[2]
 
     ${from_options}=    Get List Items    ${from_account}
     Log To Console    FROM OPTIONS=${from_options}
-    Wait Until Element Is Visible
-    ...    ${from_account}
-    ...   3s
 
-    Sleep    2s
-    Select From List By Label
-    ...    ${from_account}
-    ...    ${SOURCE_ACCOUNT}
-    Sleep    2s
-    Select From List By Label
-    ...    ${to_account}
-    ...    ${DEST_ACCOUNT}
+    Select From List By Value    ${from_account}    ${SOURCE_ACCOUNT}
+    Select From List By Value    ${to_account}      ${DEST_ACCOUNT}
 
-    Click Element
-    ...    ${transfer_btn}
+    Click Element    ${transfer_btn}
+    Wait Until Page Contains    Transfer Complete!
 
-    Wait Until Page Contains
-    ...    Transfer Complete!
 Verify Transfer Confirmation
     Wait Until Page Contains   Accounts Overview     25s
     Click Element    ${transfer_funds}
