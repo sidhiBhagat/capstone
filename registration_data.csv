@@ -1,0 +1,6 @@
+*** Test Cases ***,${firstname},${lastname},${address},${city},${state},${zipcode},${phone},${ssn},${username},${password},${confirm}
+Register hannahwells,Hannah,Wells,12 Rosewood Lane,Boston,MA,2101,9876500001,111111,hannahwells,Pass@200,Pass@200
+Register garrettg,Garrett,Graham,88 River View Rd,Denver,CO,80202,9876500002,222222,garrettgraham,Pass@201,Pass@201
+Register banthony,Anthony,Bridgerton,451 King Street,London,LN,10001,9876500003,333333,anthonybridgerton,Pass@202,Pass@202
+Register tabithawill,Tabitha,Williams,27 Willow Park,Austin,TX,73301,9876500004,444444,tabithawilliams,Pass@203,Pass@203
+Register daphnebridge,Daphne,Basset,99 Garden Avenue,Bath,BA,1002,9876500005,555555,daphnebasset,Pass@204,Pass@204
