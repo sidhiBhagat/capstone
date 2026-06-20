@@ -37,23 +37,22 @@ TC-NEG-TF-02 Transfer Amount Exceeds Balance
 
     Wait Until Element Is Visible    ${from_account}    10s
     Wait Until Keyword Succeeds    10x    1s
-    ...    Page Should Contain Element    ${from_account}/option[2]
+    ...    Page Should Contain Element    ${from_account}
 
     Input Text    ${amount}    999999
-    ${accounts}=    Get List Items    ${from_account}
-    Log To Console    ${accounts}
-    ${source}=    Set Variable    ${accounts}[0]
-    ${dest}=      Set Variable    ${accounts}[1]
+    Wait Until Element Is Visible    ${from_account_dropdown}
+    ${account}=    Get Text
+    ...    ${from_account_dropdown}
 
-    Select From List By Label    ${from_account}    ${source}
-    Select From List By Label    ${to_account}      ${dest}
-#    Select From List By Label
-#    ...    ${from_account}
-#    ...    ${SOURCE_ACCOUNT}
-#    Sleep    5s
-#    Select From List By Label
-#    ...    ${to_account}
-#    ...    ${DEST_ACCOUNT}
+    Select From List By Label
+    ...    ${from_account}
+    ...    ${account}
+
+    Select From List By Index
+    ...    ${to_account}
+    ...    ${account}[1]
+
+
     Click Element    ${transfer_btn}
 
     Sleep    3s

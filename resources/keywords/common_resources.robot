@@ -18,16 +18,6 @@ Load Environment
     ${url}=  Get Env    baseurl
     Set Global Variable    ${BASE_URL}  ${url}
 
-Capture Source Account
-
-    ${SOURCE_ACCOUNT}=    Get Text
-    ...    xpath=(//a[contains(@href,'activity')])[1]
-
-    Set Suite Variable
-    ...    ${SOURCE_ACCOUNT}
-
-    Log To Console    Source Account: ${SOURCE_ACCOUNT}
-
 Initialize API Suite
     Load Environment
     Open Application
@@ -41,6 +31,11 @@ Initialize API Suite
 Open Application
     Open Browser    ${BASE_URL}    ${BROWSER}
     Maximize Browser Window
+
+Open and Login Application
+    Open Browser    ${BASE_URL}    ${BROWSER}
+    Maximize Browser Window
+    Login to Application
 
 Close Application
     Close Browser

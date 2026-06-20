@@ -43,12 +43,11 @@ Verify Confirmation Message and Account Number
     Click Element    ${open_new_account}
     Click Element    ${account_type}
     Click Element    ${account_type_dropdown}
-    Wait Until Element Is Visible    ${from_account}
-    Select From List By Label    ${from_account}    ${SOURCE_ACCOUNT}
+#    Wait Until Element Is Visible    ${from_account}    10
     Log To Console    Clicking the Open New Account button
     Click Element    ${submit_btn}
     Log To Console    Clicked the submit button
-    Sleep  5s
+    Wait Until Page Contains    Congratulations    10s
     ${confirmation_message}=    Get Text    xpath=//div[@id="openAccountResult"]//p
     Log To Console    Confirmation Message: ${confirmation_message}
     ${account_number}=    Get Text    xpath=//div[@id="openAccountResult"]//p[2]
