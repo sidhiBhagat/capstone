@@ -27,3 +27,5 @@ robotframework-pabot>=4.0
 allure-robotframework>=2.13.5
 
 robotframework-metrics>=3.7.0
+
+PyYAML>=6.0
