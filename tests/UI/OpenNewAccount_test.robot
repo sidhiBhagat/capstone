@@ -3,7 +3,7 @@ Library     SeleniumLibrary
 Resource    ../../resources/pages/OpenNewAccount_page.robot
 
 Suite Setup     Load Environment
-Test Setup      Open Application
+Test Setup      Open and Login Application
 Test Teardown       Close Application
 *** Test Cases ***
 TC-AC-UI-01 open-New-Account

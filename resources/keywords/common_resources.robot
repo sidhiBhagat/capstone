@@ -18,11 +18,26 @@ Load Environment
     ${url}=  Get Env    baseurl
     Set Global Variable    ${BASE_URL}  ${url}
 
+*** Keywords ***
+Capture Source Account
+    Wait Until Element Is Visible
+    ...    xpath=(//a[contains(@href,'activity')])[1]
+
+    ${SOURCE_ACCOUNT}=    Get Text
+    ...    xpath=(//a[contains(@href,'activity')])[1]
+
+    Set Suite Variable
+    ...    ${SOURCE_ACCOUNT}
+
+    Log To Console
+    ...    Source Account: ${SOURCE_ACCOUNT}
+
 Initialize API Suite
     Load Environment
     Open Application
     Create API Session
     Login To Application
+    Capture Source Account
     Get Customer ID From Account
     ...    ${SOURCE_ACCOUNT}
     Open New Account - Savings

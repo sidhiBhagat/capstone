@@ -4,7 +4,7 @@ Resource    ../../resources/keywords/common_resources.robot
 Resource    ../../resources/keywords/api_keywords.robot
 
 Suite Setup     Run Keywords    Load Environment    AND    Create API Session
-Test Setup      Open Application
+Test Setup      Open and Login Application
 Test Teardown       Close Application
 
 *** Test Cases ***
@@ -40,7 +40,7 @@ TC-E2E-02 Create Account and Validate Type and Balance via API
     ...    200
 #
 #    Log To Console    Status Code: ${response.status_code}
-    Get Account Details    ${DEST_ACCOUNT}
+#    Get Account Details    ${DEST_ACCOUNT}
 
     ${body}=    Set Variable    ${response.json()}
 
