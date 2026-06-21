@@ -7,20 +7,12 @@ Resource    ../../resources/keywords/common_resources.robot
 Resource    ../../resources/pages/transferFunds_page.robot
 
 Suite Setup   Initialize API Suite
+Test Teardown    Close Application
 
 *** Variables ***
 ${TRANSFER_AMOUNT}    100.00
 
 *** Test Cases ***
-#Capture Source Balance Before Transfer
-#    ${response}=    Get Account Details    ${SOURCE_ACCOUNT}
-#    ${account}=    Evaluate    $response.json()
-#    Set Suite Variable    ${SRC_BALANCE_BEFORE}    ${account}[balance]
-#
-#Capture Destination Balance Before Transfer
-#    ${response}=    Get Account Details    ${DEST_ACCOUNT}
-#    ${account}=    Evaluate    $response.json()
-#    Set Suite Variable    ${DEST_BALANCE_BEFORE}    ${account}[balance]
 
 TC-API-GET-01 Verify Accounts API Returns 200
     ${response}=    Get Customer Accounts    ${CUSTOMER_ID}

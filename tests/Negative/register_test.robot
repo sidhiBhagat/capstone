@@ -1,6 +1,5 @@
 *** Settings ***
 Library     SeleniumLibrary
-Resource    ../../resources/pages/loginPage.robot
 Resource    ../../resources/keywords/common_resources.robot
 Resource    ../../variables/register_locator.robot
 

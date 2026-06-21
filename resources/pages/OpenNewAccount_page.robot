@@ -18,14 +18,9 @@ Open New Account - Savings
     Click Element    ${open_new_account}
     Click Element    ${account_type}
     Click Element    ${account_type_dropdown}
-#    Select From List By Index    ${from_account}    5
-#    Execute Javascript
-#    ...    document.querySelector("input[value='Open New Account']").click()
     Sleep    2s
     Log To Console    Clicking the Open New Account button
     Click Element    ${submit_btn}
-#    Log To Console    Clicked the submit button
-#    Sleep    4s
     Wait Until Page Contains    Congratulations    10s
 
 Open New Account - Checking
@@ -39,15 +34,7 @@ Open New Account - Checking
     Wait Until Page Contains    Congratulations    10s
 
 Verify Confirmation Message and Account Number
-    Wait Until Element Is Visible    ${open_new_account}    timeout=20s
-    Click Element    ${open_new_account}
-    Click Element    ${account_type}
-    Click Element    ${account_type_dropdown}
-#    Wait Until Element Is Visible    ${from_account}    10
-    Log To Console    Clicking the Open New Account button
-    Click Element    ${submit_btn}
-    Log To Console    Clicked the submit button
-    Wait Until Page Contains    Congratulations    10s
+    Open New Account - Savings
     ${confirmation_message}=    Get Text    xpath=//div[@id="openAccountResult"]//p
     Log To Console    Confirmation Message: ${confirmation_message}
     ${account_number}=    Get Text    xpath=//div[@id="openAccountResult"]//p[2]

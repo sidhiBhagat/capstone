@@ -13,7 +13,7 @@ Create API Session
 
     Create Session
     ...    parabank
-    ...    https://parabank.parasoft.com
+    ...    url=https://parabank.parasoft.com
     ...    headers=${headers}
     ...    verify=${False}
 
@@ -56,13 +56,3 @@ Get Account Details
     ...    /parabank/services/bank/accounts/${account_id}
 
     RETURN    ${response}
-
-#Create New Account
-#
-#    [Arguments]    ${customer_id}    ${account_type}
-#
-#    ${response}=    POST On Session
-#    ...    parabank
-#    ...    /parabank/services/bank/createAccount?customerId=${customer_id}&newAccountType=${account_type}
-#
-#    RETURN    ${response}

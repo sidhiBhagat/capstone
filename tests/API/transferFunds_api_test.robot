@@ -7,6 +7,7 @@ Resource    ../../resources/keywords/common_resources.robot
 Resource    ../../resources/pages/transferFunds_page.robot
 
 Suite Setup   Initialize API Suite
+Test Teardown   Close Application
 
 *** Variables ***
 ${TRANSFER_AMOUNT}    100.00
