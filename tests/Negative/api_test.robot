@@ -2,6 +2,7 @@
 Library    RequestsLibrary
 Library    Collections
 Resource    ../../resources/keywords/common_resources.robot
+Suite Setup     Load Environment
 Test Setup      Open Application
 Test Teardown      Close Application
 *** Test Cases ***
